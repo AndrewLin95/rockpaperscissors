@@ -54,10 +54,12 @@ let compareDecisions = () => {
         body.appendChild(p);
         generatePlayAgain();
     } else if ((playerResult == 'Rock' && computerResult == 'Scissors') || (playerResult == 'Paper' && computerResult == 'Rock') || (playerResult == 'Scissors' && computerResult == 'Paper')) {
+        increasePlayerScoreFunc();
         p.textContent = string + '. You win!';
         body.appendChild(p);
         generatePlayAgain();
     } else {
+        increaseComputerScoreFunc();
         p.textContent = string + '. You lose!';
         body.appendChild(p);
         generatePlayAgain();
@@ -73,13 +75,29 @@ let generatePlayAgain = () => {
 }
 
 
-// Counter
-let counterLabel = document.querySelector('label');
+// Counters for the round, player score and computer score
+let roundLabel = document.querySelector('.roundLabel');
 let roundCount = 0;
 
 let increaseCounter = () => {
     roundCount ++;
-    counterLabel.textContent = roundCount;
+    roundLabel.textContent = roundCount;
+}
+
+let playerScoreLabel = document.querySelector('.playerScore')
+let playerScore = 0;
+
+let increasePlayerScoreFunc = () => {
+    playerScore ++;
+    playerScoreLabel.textContent = playerScore;
+}
+
+let computerScoreLabel = document.querySelector('.computerScore')
+let computerScore = 0;
+
+let increaseComputerScoreFunc = () => {
+    computerScore ++;
+    computerScoreLabel.textContent = computerScore;
 }
 
 play.addEventListener('click', chooseValueFunc);
