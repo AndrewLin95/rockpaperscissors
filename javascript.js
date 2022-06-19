@@ -4,6 +4,7 @@ let div = document.querySelector('div');
 let body = document.querySelector('body');
 let p = document.createElement('p');
 let playAgainButton = document.createElement('button');
+
 // Function to store the player input and clear the selection box
 
 let playerDecision = () => {
@@ -24,6 +25,19 @@ let computerDecision = () => {
         return 'Scissors';
     }
 }
+
+// Empty selection check
+
+let chooseValueFunc = () => {
+
+    if (input.value == ''){
+        p.textContent = 'Error - choose one!';
+        body.appendChild(p);
+    } else {
+        compareDecisions();
+    }
+}
+
 
 // Function to compare the two decisions and displays the a result in a text
 
@@ -68,8 +82,8 @@ let increaseCounter = () => {
     counterLabel.textContent = roundCount;
 }
 
-play.addEventListener('click', compareDecisions);
-playAgainButton.addEventListener('click', compareDecisions);
+play.addEventListener('click', chooseValueFunc);
+playAgainButton.addEventListener('click', chooseValueFunc);
 
 
 
