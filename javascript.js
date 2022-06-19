@@ -4,7 +4,6 @@ let div = document.querySelector('div');
 let body = document.querySelector('body');
 let p = document.createElement('p');
 let playAgainButton = document.createElement('button');
-
 // Function to store the player input and clear the selection box
 
 let playerDecision = () => {
@@ -32,7 +31,9 @@ let compareDecisions = () => {
     let playerResult = playerDecision();
     let computerResult = computerDecision();
 
-    const string = 'You played ' + playerResult + ' against the computers ' + computerResult;
+    increaseCounter();
+
+    const string = 'You played ' + playerResult + ' against the computer\'s ' + computerResult;
 
     if (playerResult == computerResult){
         p.textContent = string + '. You tied!';
@@ -57,6 +58,15 @@ let generatePlayAgain = () => {
     div.appendChild(playAgainButton);
 }
 
+
+// Counter
+let counterLabel = document.querySelector('label');
+let roundCount = 0;
+
+let increaseCounter = () => {
+    roundCount ++;
+    counterLabel.textContent = roundCount;
+}
 
 play.addEventListener('click', compareDecisions);
 playAgainButton.addEventListener('click', compareDecisions);
