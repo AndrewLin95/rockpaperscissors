@@ -101,4 +101,12 @@ let increaseComputerScoreFunc = () => {
 
 play.addEventListener('click', chooseValueFunc);
 playAgainButton.addEventListener('click', chooseValueFunc);
+body.addEventListener('keypress', function(event){
+    if (event.key === 'Enter'){
+        chooseValueFunc();
+        event.preventDefault();
+    } else {
+        return;
+    }
+})
 
