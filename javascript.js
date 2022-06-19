@@ -38,7 +38,6 @@ let chooseValueFunc = () => {
     }
 }
 
-
 // Function to compare the two decisions and displays the a result in a text
 
 let compareDecisions = () => {
@@ -103,6 +102,3 @@ let increaseComputerScoreFunc = () => {
 play.addEventListener('click', chooseValueFunc);
 playAgainButton.addEventListener('click', chooseValueFunc);
 
-
-
-// Output: you played __input__ against the computers __computerAction_. You win! / You Lose!/ You tied!
