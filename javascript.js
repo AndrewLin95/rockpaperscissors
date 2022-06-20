@@ -16,14 +16,10 @@ let playerDecision = () => {
 // Function to randomize and output rock paper or scissors
 
 let computerDecision = () => {
-    let randomNum = Math.floor(Math.random()*3);
-    if (randomNum === 0){
-        return 'Rock';
-    } else if (randomNum === 1){
-        return 'Paper';
-    } else{
-        return 'Scissors';
-    }
+    let optionArray = ["Rock", "Paper", "Scissors"];
+    let randomNum = optionArray[Math.floor(Math.random()*optionArray.length)];
+    console.log(randomNum);
+    return randomNum;
 }
 
 // Empty selection check
