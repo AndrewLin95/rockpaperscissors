@@ -1,72 +1,46 @@
-let input = document.querySelector('select');
-let play = document.querySelector('#playButton');
+const rpsButtons = document.querySelectorAll('button');
 let div = document.querySelector('div');
 let body = document.querySelector('body');
 let p = document.createElement('p');
-let playAgainButton = document.createElement('button');
 
-// Function to store the player input and clear the selection box
+// Creating constants for rock paper and scissors
+const rock = 'rock';
+const paper = 'paper';
+const scissor = 'scissor';
 
-let playerDecision = () => {
-    const playerAction = input.value;
-    input.value = '';
-    return playerAction;
-}
+
+// Variable to store the type of button that was clicked.
+let playerDecision = '';
 
 // Function to randomize and output rock paper or scissors
 
 let computerDecision = () => {
-    let optionArray = ["Rock", "Paper", "Scissors"];
+    let optionArray = [rock, paper, scissor];
     let randomNum = optionArray[Math.floor(Math.random()*optionArray.length)];
-    console.log(randomNum);
     return randomNum;
-}
-
-// Empty selection check
-
-let chooseValueFunc = () => {
-
-    if (input.value == ''){
-        p.textContent = 'Error - choose one!';
-        body.appendChild(p);
-    } else {
-        compareDecisions();
-    }
 }
 
 // Function to compare the two decisions and displays the a result in a text
 
 let compareDecisions = () => {
-    let playerResult = playerDecision();
     let computerResult = computerDecision();
 
     increaseCounter();
 
-    const string = 'You played ' + playerResult + ' against the computer\'s ' + computerResult;
+    const string = 'You played ' + playerDecision + ' against the computer\'s ' + computerResult;
 
-    if (playerResult == computerResult){
+    if (playerDecision == computerResult){
         p.textContent = string + '. You tied!';
         body.appendChild(p);
-        generatePlayAgain();
-    } else if ((playerResult == 'Rock' && computerResult == 'Scissors') || (playerResult == 'Paper' && computerResult == 'Rock') || (playerResult == 'Scissors' && computerResult == 'Paper')) {
+    } else if ((playerDecision == rock && computerResult == scissor) || (playerDecision == paper && computerResult == rock) || (playerDecision == scissor && computerResult == paper)) {
         increasePlayerScoreFunc();
         p.textContent = string + '. You win!';
         body.appendChild(p);
-        generatePlayAgain();
     } else {
         increaseComputerScoreFunc();
         p.textContent = string + '. You lose!';
         body.appendChild(p);
-        generatePlayAgain();
     }
-}
-
-// Changes the Play! button to Play Again! and clears the line.
-
-let generatePlayAgain = () => {
-    play.remove();
-    playAgainButton.textContent = 'Play Again!';
-    div.appendChild(playAgainButton);
 }
 
 
@@ -95,14 +69,20 @@ let increaseComputerScoreFunc = () => {
     computerScoreLabel.textContent = computerScore;
 }
 
-play.addEventListener('click', chooseValueFunc);
-playAgainButton.addEventListener('click', chooseValueFunc);
-body.addEventListener('keypress', function(event){
-    if (event.key === 'Enter'){
-        chooseValueFunc();
-        event.preventDefault();
-    } else {
-        return;
-    }
-})
+
+rpsButtons.forEach((button) => {
+    button.addEventListener('click', ()=>{
+        if (button.id = rock){
+            playerDecision = rock;
+            compareDecisions();
+        } else if (button.id = paper){
+            playerDecision = paper;
+            compareDecisions();
+        } else {
+            playerDecision = scissor;
+            compareDecisions();
+        }
+    }); 
+});
+
 
